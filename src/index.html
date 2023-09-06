@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шифрование и расшифровка</title>
+</head>
+<body>
+    <h1>Шифрование и расшифровка сообщения</h1>
+
+    <!-- Форма для ввода сообщения -->
+    <form id="cryptoForm">
+        <label for="message">Введите сообщение:</label>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+
+        <label for="action">Выберите действие:</label>
+        <select id="action" name="action" required>
+            <option value="encrypt">Зашифровать</option>
+            <option value="decrypt">Расшифровать</option>
+        </select>
+
+        <label for="shiftAmount">Введите сдвиг (целое число):</label>
+        <input type="number" id="shiftAmount" name="shiftAmount" required>
+
+        <button type="submit">Выполнить</button>
+    </form>
+
+    <!-- Результат шифрования или расшифровки -->
+    <div id="result">
+        <h2>Результат:</h2>
+        <p id="output"></p>
+    </div>
+
+    <!-- JavaScript для обработки формы -->
+    <script>
+        // Функция для шифрования текста методом шифра перестановок (шифр Цезаря)
+        function encrypt(text, shift) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (char.match(/[a-zA-Z]/)) {
+                    const isUpperCase = char === char.toUpperCase();
+                    const charCode = char.charCodeAt(0);
+                    const offset = isUpperCase ? 65 : 97;
+                    char = String.fromCharCode(((charCode - offset + shift) % 26) + offset);
+                }
+                result += char;
+            }
+            return result;
+        }
+
+        // Функция для расшифровки текста методом шифра перестановок (шифр Цезаря)
+        function decrypt(text, shift) {
+            return encrypt(text, 26 - shift); // Дешифровка - это шифрование со сдвигом в обратную сторону
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cryptoForm = document.getElementById('cryptoForm');
+            const output = document.getElementById('output');
+
+            cryptoForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const message = document.getElementById('message').value;
+                const action = document.getElementById('action').value;
+                const shiftAmount = parseInt(document.getElementById('shiftAmount').value, 10);
+
+                let result = '';
+
+                if (action === 'encrypt') {
+                    result = encrypt(message, shiftAmount);
+                } else if (action === 'decrypt') {
+                    result = decrypt(message, shiftAmount);
+                }
+
+                output.textContent = result;
+            });
+        });
+    </script>
+</body>
+</html>
