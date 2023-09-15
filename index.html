@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Шифрование и расшифровка</title>
+        <script src="code-encode1.js" defer></script>
+        <script src="code-encode2.js" defer></script>
+        <script src="code-encode3.js" defer></script>
+        <script src="code-encode4.js" defer></script>
+
+        <script src="tabs.js" defer></script>
+    </head>
+    <body>
+        <h1>Шифрование и расшифровка сообщения</h1>
+
+        <div class="tabs">
+            <button onclick="showTab(1)">Шифр Цезаря</button>
+            <button onclick="showTab(2)">Шифр простої заміни</button>
+            <button onclick="showTab(3)">Шифр перестановки букв</button>
+            <button onclick="showTab(4)">Шифр перестановки по порядку</button>
+        </div>
+
+        <div id="tab1" class="tab">
+            <h2>Шифр Цезаря</h2>
+            <!-- Форма для ввода сообщения -->
+            <form id="cryptoForm">
+                <label for="message1">Введите сообщение:</label>
+                <textarea id="message1" name="message1" rows="4" cols="50" required></textarea>
+
+                <label for="action">Выберите действие:</label>
+                <select id="action" name="action" required>
+                    <option value="encrypt1">Зашифровать</option>
+                    <option value="decrypt1">Расшифровать</option>
+                </select>
+
+                <label for="shiftAmount">Введите сдвиг (целое число):</label>
+                <input type="number" id="shiftAmount" name="shiftAmount" required>
+
+                <button type="submit">Выполнить</button>
+            </form>
+
+            <!-- Результат шифрования или расшифровки -->
+            <div id="result">
+                <h2>Результат:</h2>
+                <p id="output1"></p>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab">
+            <h2>Шифр простої заміни</h2>
+            <label for="message2">Введите сообщение:</label>
+            <input type="text" id="message2">
+            <button onclick="encrypt2()">Зашифровать</button>
+            <button onclick="decrypt2()">Расшифровать</button>
+            <p>Зашифрованное/расшифрованное сообщение:</p>
+            <div id="result">
+                <h2>Результат:</h2>
+                <p id="output2"></p>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab">
+            <h2>Шифр перестановки букв</h2>
+            <textarea id="inputText" placeholder="Введите текст для шифрования/дешифрования"></textarea>
+            <button onclick="encrypt3()">Зашифровать</button>
+            <button onclick="decrypt3()">Дешифровать</button>
+            <p>Результат: <span id="outputText"></span></p>
+        </div>
+
+        <div id="tab4" class="tab">
+            <h2>Шифр перестановки по порядку</h2>
+            <textarea id="inputText4" rows="4" cols="50" placeholder="Введите текст для шифрования/дешифрования"></textarea><br>
+            <button onclick="encrypt4()">Зашифровать</button>
+            <button onclick="decrypt4()">Дешифровать</button>
+            <br>
+            <textarea id="outputText4" rows="4" cols="50" placeholder="Результат"></textarea>
+          
+        </div>
+    </body>
+</html>
