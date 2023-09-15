@@ -1,7 +1,7 @@
 // Функция для зашифровки текста
 function encrypt3() {
     var inputText = document.getElementById("inputText").value;
-    var key = prompt("Введите ключ (число перестановок):");
+    var key = document.getElementById("inputkey").value;
     var encryptedText = "";
     for (var i = 0; i < inputText.length; i++) {
         if (inputText[i] !== " ") {
@@ -18,7 +18,7 @@ function encrypt3() {
 // Функция для дешифровки текста
 function decrypt3() {
     var inputText = document.getElementById("inputText").value;
-    var key = prompt("Введите ключ (число перестановок):");
+    var key = document.getElementById("inputkey").value;
     var decryptedText = "";
     for (var i = 0; i < inputText.length; i++) {
         if (inputText[i] !== " ") {
