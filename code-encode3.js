@@ -12,7 +12,7 @@ function encrypt3() {
             encryptedText += " ";
         }
     }
-    document.getElementById("outputText").textContent = encryptedText;
+    document.getElementById("outputText3").textContent = encryptedText;
 }
 
 // Функция для дешифровки текста
@@ -29,5 +29,5 @@ function decrypt3() {
             decryptedText += " ";
         }
     }
-    document.getElementById("outputText").textContent = decryptedText;
+    document.getElementById("outputText3").textContent = decryptedText;
 }
