@@ -1,13 +1,13 @@
 function encrypt4() {
     const inputText4 = document.getElementById("inputText4").value;
-    const railCount = 3; // Количество рельсов (можете изменить)
+    const railCount = 3; // Количество рельсов 
     const encryptedText = railFenceEncrypt(inputText4, railCount);
     document.getElementById("outputText4").textContent = encryptedText;
   }
 
   function decrypt4() {
     const inputText4 = document.getElementById("inputText4").value;
-    const railCount = 3; // Количество рельсов (должно совпадать с количеством рельсов при шифровании)
+    const railCount = 3; // Количество рельсов
     const decryptedText = railFenceDecrypt(inputText4, railCount);
     document.getElementById("outputText4").textContent = decryptedText;
   }

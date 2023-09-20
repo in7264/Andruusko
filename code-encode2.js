@@ -1,4 +1,3 @@
-// Здесь вы можете задать вашу собственную таблицу замены
 const substitutionTable = {
     'a': 'z',
     'b': 'y',
@@ -45,7 +44,6 @@ function decrypt2() {
     const inputMessage = document.getElementById('message2').value.toLowerCase();
     let decryptedMessage = '';
 
-    // Создаем обратную таблицу замены
     const reverseSubstitutionTable = {};
     for (const key in substitutionTable) {
         const value = substitutionTable[key];

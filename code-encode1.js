@@ -1,4 +1,3 @@
-
 // Функция для шифрования текста методом шифра перестановок (шифр Цезаря)
 function encrypt1(text, shift) {
     let result = '';
@@ -17,7 +16,7 @@ function encrypt1(text, shift) {
 
 // Функция для расшифровки текста методом шифра перестановок (шифр Цезаря)
 function decrypt1(text, shift) {
-    return encrypt1(text, 26 - shift); // Дешифровка - это шифрование со сдвигом в обратную сторону
+    return encrypt1(text, 26 - shift);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
