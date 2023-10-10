@@ -8,33 +8,28 @@
 </head>
 <body>
     <div class="">
-        <h1>Шифр Скитала</h1>
-        <label for="inputText1">Введіть текст:</label>
-        <textarea id="inputText1" rows="4" cols="50"></textarea>
-        <br>
-        <label for="shiftAmount1">Кількість позицій для зміщення:</label>
-        <input type="number" id="shiftAmount1">
-        <br>
-        <button onclick="encrypt1()">Зашифрувати</button>
-        <button onclick="decrypt1()">Розшифрувати</button>
-        <br>
-        <label for="outputText1">Результат:</label>
-        <textarea id="outputText1" rows="4" cols="50" readonly></textarea>
+        <h1>Myszkowski Transposition Cipher</h1>
+        <label for="inputText">Введите текст: </label>
+        <input type="text" id="inputText1"><br>
+        <label for="keyword">Ключевое слово: </label>
+        <input type="text" id="keyword1"><br>
+        <button onclick="encrypt1()">Зашифровать</button>
+        <button onclick="decrypt1()">Расшифровать</button>
+        <p>Зашифрованный текст: <span id="encryptedText1"></span></p>
+        <p>Расшифрованный текст: <span id="decryptedText1"></span></p>
     </div>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="">
-        <h1>Шифр підстановки</h1>
-        <div class="container">
-            <textarea id="inputText" placeholder="Введіть текст для шифрування або розшифрування"></textarea>
-            <button onclick="encrypt()">Зашифрувати</button>
-            <button onclick="decrypt()">Розшифрувати</button>
-            <textarea id="outputText" readonly></textarea>
-        </div>
+        <h1>Шифровка и дешифровка с использованием кодового слова</h1>
+        <textarea id="originalText2" placeholder="Введите текст для шифровки"></textarea>
+        <br>
+        <input type="text" id="keyword2" placeholder="Введите кодовое слово">
+        <br>
+        <button onclick="encrypt2()">Зашифровать</button>
+        <button onclick="decrypt2()">Расшифровать</button>
+        <br>
+        <p>Зашифрованный текст: <span id="encryptedText2"></span></p>
+        <p>Расшифрованный текст: <span id="decryptedText2"></span></p>
     </div>
 </body>
 </html>

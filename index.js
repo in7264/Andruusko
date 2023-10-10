@@ -1,41 +1,31 @@
 function encrypt1() {
     const inputText = document.getElementById('inputText1').value;
-    const shiftAmount = parseInt(document.getElementById('shiftAmount1').value);
-    const encryptedText = skytalaEncrypt(inputText, shiftAmount);
-    document.getElementById('outputText1').value = encryptedText;
-}
+    const keyword = document.getElementById('keyword1').value;
+    const keywordLength = keyword.length;
+    let encryptedText = '';
 
-function decrypt1() {
+    for (let i = 0; i < inputText.length; i++) {
+      const char = inputText.charAt(i);
+      const shift = keyword.charCodeAt(i % keywordLength) - 65;
+      const encryptedChar = String.fromCharCode(((char.charCodeAt(0) - 65 + shift) % 26) + 65);
+      encryptedText += encryptedChar;
+    }
+
+    document.getElementById('encryptedText1').textContent = encryptedText;
+  }
+
+  function decrypt1() {
     const inputText = document.getElementById('inputText1').value;
-    const shiftAmount = parseInt(document.getElementById('shiftAmount1').value);
-    const decryptedText = skytalaDecrypt(inputText, shiftAmount);
-    document.getElementById('outputText1').value = decryptedText;
-}
+    const keyword = document.getElementById('keyword1').value;
+    const keywordLength = keyword.length;
+    let decryptedText = '';
 
-function skytalaEncrypt(text, shift) {
-    let result = '';
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] === ' ') {
-            result += ' ';
-        } else {
-            const code = text.charCodeAt(i);
-            const encryptedCode = code + shift;
-            result += String.fromCharCode(encryptedCode);
-        }
+    for (let i = 0; i < inputText.length; i++) {
+      const char = inputText.charAt(i);
+      const shift = keyword.charCodeAt(i % keywordLength) - 65;
+      const decryptedChar = String.fromCharCode(((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65);
+      decryptedText += decryptedChar;
     }
-    return result;
-}
 
-function skytalaDecrypt(text, shift) {
-    let result = '';
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] === ' ') {
-            result += ' ';
-        } else {
-            const code = text.charCodeAt(i);
-            const decryptedCode = code - shift;
-            result += String.fromCharCode(decryptedCode);
-        }
-    }
-    return result;
-}
+    document.getElementById('decryptedText1').textContent = decryptedText;
+  }
