@@ -9,14 +9,17 @@
 <body>
     <div class="">
         <h1>Myszkowski Transposition Cipher</h1>
-        <label for="inputText">Введите текст: </label>
-        <input type="text" id="inputText1"><br>
-        <label for="keyword">Ключевое слово: </label>
-        <input type="text" id="keyword1"><br>
-        <button onclick="encrypt1()">Зашифровать</button>
-        <button onclick="decrypt1()">Расшифровать</button>
-        <p>Зашифрованный текст: <span id="encryptedText1"></span></p>
-        <p>Расшифрованный текст: <span id="decryptedText1"></span></p>
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword">
+        <br>
+        <label for="message">Message:</label>
+        <textarea id="message"></textarea>
+        <br>
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
+        <br>
+        <p>Encrypted/Decrypted Message:</p>
+        <div id="result"></div>
     </div>
     <br>
     <div class="">

@@ -1,31 +1,55 @@
-function encrypt1() {
-    const inputText = document.getElementById('inputText1').value;
-    const keyword = document.getElementById('keyword1').value;
-    const keywordLength = keyword.length;
-    let encryptedText = '';
-
-    for (let i = 0; i < inputText.length; i++) {
-      const char = inputText.charAt(i);
-      const shift = keyword.charCodeAt(i % keywordLength) - 65;
-      const encryptedChar = String.fromCharCode(((char.charCodeAt(0) - 65 + shift) % 26) + 65);
-      encryptedText += encryptedChar;
-    }
-
-    document.getElementById('encryptedText1').textContent = encryptedText;
+function encrypt() {
+    const keyword = document.getElementById("keyword").value;
+    const message = document.getElementById("message").value;
+    const encryptedMessage = myszkowskiEncrypt(message, keyword);
+    document.getElementById("result").textContent = encryptedMessage;
   }
 
-  function decrypt1() {
-    const inputText = document.getElementById('inputText1').value;
-    const keyword = document.getElementById('keyword1').value;
-    const keywordLength = keyword.length;
-    let decryptedText = '';
+  function decrypt() {
+    const keyword = document.getElementById("keyword").value;
+    const message = document.getElementById("message").value;
+    const decryptedMessage = myszkowskiDecrypt(message, keyword);
+    document.getElementById("result").textContent = decryptedMessage;
+  }
 
-    for (let i = 0; i < inputText.length; i++) {
-      const char = inputText.charAt(i);
-      const shift = keyword.charCodeAt(i % keywordLength) - 65;
-      const decryptedChar = String.fromCharCode(((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65);
-      decryptedText += decryptedChar;
+  function myszkowskiEncrypt(message, keyword) {
+    const sortedKeyword = [...keyword].sort().join("");
+    const columnOrder = Array.from({ length: keyword.length }, (_, i) => sortedKeyword.indexOf(keyword[i]));
+    const rowCount = Math.ceil(message.length / keyword.length);
+    const matrix = Array.from({ length: rowCount }, (_, i) => message.substr(i * keyword.length, keyword.length).split(''));
+    let result = "";
+
+    for (let i = 0; i < keyword.length; i++) {
+      const columnIndex = columnOrder.indexOf(i);
+      for (let j = 0; j < rowCount; j++) {
+        if (matrix[j][columnIndex]) {
+          result += matrix[j][columnIndex];
+          matrix[j][columnIndex] = "";
+        }
+      }
     }
 
-    document.getElementById('decryptedText1').textContent = decryptedText;
+    return result;
+  }
+
+  function myszkowskiDecrypt(message, keyword) {
+    const sortedKeyword = [...keyword].sort().join("");
+    const columnOrder = Array.from({ length: keyword.length }, (_, i) => sortedKeyword.indexOf(keyword[i]));
+    const rowCount = Math.ceil(message.length / keyword.length);
+    const matrix = Array.from({ length: rowCount }, (_, i) => new Array(keyword.length));
+    let messageIndex = 0;
+
+    for (let i = 0; i < keyword.length; i++) {
+      const columnIndex = columnOrder.indexOf(i);
+      for (let j = 0; j < rowCount; j++) {
+        matrix[j][columnIndex] = message[messageIndex++];
+      }
+    }
+
+    let result = "";
+    for (let i = 0; i < rowCount; i++) {
+      result += matrix[i].join('');
+    }
+
+    return result;
   }
